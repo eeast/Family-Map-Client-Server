@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MyFamilyMap</string>
+    <string name="title_activity_maps">Map</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="mapFragmentMessage">This is my map fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hostIP_title">Host IP: </string>
+    <string name="port_title">Port: </string>
+    <string name="username_title">Username: </string>
+    <string name="password_title">Password: </string>
+    <string name="first_name_title">First Name: </string>
+    <string name="last_name_title">Last Name: </string>
+    <string name="email_title">Email: </string>
+    <string name="gender_title">Gender: </string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+
+</resources>
