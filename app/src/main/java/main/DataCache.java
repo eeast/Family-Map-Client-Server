@@ -1,4 +1,4 @@
-package com.example.myfamilymap;
+package main;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +14,7 @@ public class DataCache {
 
     private Person user;
 
-    private Set<Person> allPersons = new HashSet<>();
+    private final Set<Person> allPersons = new HashSet<>();
     private final Set<Event> allEvents = new HashSet<>();
 
     private final Set<Person> immediateFamilyMales = new HashSet<>();

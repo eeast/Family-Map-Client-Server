@@ -1,12 +1,6 @@
 package Service;
 
 import com.google.gson.Gson;
-import data_access.EventDAO;
-import data_access.PersonDAO;
-import data_access.UserDAO;
-import model.*;
-import request.FillRequest;
-import result.FillResult;
 
 import java.io.BufferedReader;
 import java.nio.file.Files;
@@ -15,6 +9,20 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
+
+import data_access.EventDAO;
+import data_access.PersonDAO;
+import data_access.UserDAO;
+import model.Event;
+import model.FemaleNames;
+import model.Location;
+import model.Locations;
+import model.MaleNames;
+import model.Person;
+import model.Surnames;
+import model.User;
+import request.FillRequest;
+import result.FillResult;
 
 /**
  * Fill extension of the Service class. Contains the function and logic for producing "realistic" family history data
@@ -222,7 +230,7 @@ public class FillService extends Service {
         Location l = null;
         try {
             Gson gson = new Gson();
-            BufferedReader br = Files.newBufferedReader(Paths.get("json/locations.json"));
+            BufferedReader br = Files.newBufferedReader(Paths.get("server/json/locations.json"));
             Locations locations = gson.fromJson(br, Locations.class);
             br.close();
             int index = random.nextInt(locations.size());
@@ -237,7 +245,7 @@ public class FillService extends Service {
         String n = null;
         try {
             Gson gson = new Gson();
-            BufferedReader br = Files.newBufferedReader(Paths.get("json/mnames.json"));
+            BufferedReader br = Files.newBufferedReader(Paths.get("server/json/mnames.json"));
             MaleNames maleNames = gson.fromJson(br, MaleNames.class);
             br.close();
             int index = random.nextInt(maleNames.size());
@@ -252,7 +260,7 @@ public class FillService extends Service {
         String n = null;
         try {
             Gson gson = new Gson();
-            BufferedReader br = Files.newBufferedReader(Paths.get("json/snames.json"));
+            BufferedReader br = Files.newBufferedReader(Paths.get("server/json/snames.json"));
             Surnames surnames = gson.fromJson(br, Surnames.class);
             br.close();
             int index = random.nextInt(surnames.size());
@@ -267,7 +275,7 @@ public class FillService extends Service {
         String n = null;
         try {
             Gson gson = new Gson();
-            BufferedReader br = Files.newBufferedReader(Paths.get("json/fnames.json"));
+            BufferedReader br = Files.newBufferedReader(Paths.get("server/json/fnames.json"));
             FemaleNames femaleNames = gson.fromJson(br, FemaleNames.class);
             br.close();
             int index = random.nextInt(femaleNames.size());

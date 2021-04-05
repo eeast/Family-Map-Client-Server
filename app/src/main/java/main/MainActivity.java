@@ -1,16 +1,15 @@
-package com.example.myfamilymap;
+package main;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.myfamilymap.testfiles.FamilyMapFragment;
+import com.example.myfamilymap.R;
 
 public class MainActivity extends AppCompatActivity {
 
     private FamilyMapFragment familyMapFragment;
-    private LoginFragment loginFragment;
 
     private DataCache dataCache;
 
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         dataCache = DataCache.getInstance();
 
         FragmentManager fm = getSupportFragmentManager();
-        loginFragment = (LoginFragment) fm.findFragmentById(R.id.mainFrameLayout);
+        LoginFragment loginFragment = (LoginFragment) fm.findFragmentById(R.id.mainFrameLayout);
         if (loginFragment == null) {
             loginFragment = LoginFragment.newInstance();
             fm.beginTransaction()
@@ -39,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void switchMapView() {
         dataCache = DataCache.getInstance();
-        System.out.println(dataCache.getAuthToken().getToken());
         if (dataCache.getAuthToken() != null) {
+            System.out.println(dataCache.getAuthToken().getToken());
             FragmentManager fm = getSupportFragmentManager();
             familyMapFragment = familyMapFragment.newInstance();
             fm.beginTransaction()

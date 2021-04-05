@@ -10,14 +10,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:stretchColumns="3"
-        tools:context=".LoginFragment">
+        tools:context="main.LoginFragment">
 
         <TableRow>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="Host IP: " />
+                android:text="@string/hostIP_title" />
 
             <EditText
                 android:id="@+id/hostIP"

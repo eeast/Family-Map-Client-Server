@@ -14,5 +14,8 @@
     <string name="gender_title">Gender: </string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
+    <string name="title_activity_event">EventActivity</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 
 </resources>
