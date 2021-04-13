@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="main.SettingsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/life_story_lines"
+                android:textColor="@color/black"
+                android:textSize="24sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/show_life_story_lines"
+                android:layout_marginBottom="6sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                tools:background="@android:color/darker_gray"
+                android:layout_marginBottom="6sp" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchLifeStoryLines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Family Tree Lines"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SHOW FAMILY TREE LINES"
+                android:layout_marginBottom="6sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                tools:background="@android:color/darker_gray"
+                android:layout_marginBottom="6sp" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchFamilyTreeLines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Spouse Lines"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SHOW SPOUSE LINES"
+                android:layout_marginBottom="6sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                tools:background="@android:color/darker_gray"
+                android:layout_marginBottom="6sp" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchSpouseLines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Father's Side"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FILTER BY FATHER'S SIDE OF FAMILY"
+                android:layout_marginBottom="6sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                tools:background="@android:color/darker_gray"
+                android:layout_marginBottom="6sp" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchFatherSide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mother's Side"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FILTER BY MOTHER'S SIDE OF FAMILY"
+                android:layout_marginBottom="6sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                tools:background="@android:color/darker_gray"
+                android:layout_marginBottom="6sp" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchMotherSide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Male Events"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FILTER EVENTS BASED ON GENDER"
+                android:layout_marginBottom="6sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                tools:background="@android:color/darker_gray"
+                android:layout_marginBottom="6sp" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchMaleEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Female Events"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FILTER EVENTS BASED ON GENDER"
+                android:layout_marginBottom="6sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                tools:background="@android:color/darker_gray"
+                android:layout_marginBottom="6sp" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchFemaleEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RETURN TO LOGIN SCREEN"
+                android:layout_marginBottom="6sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                tools:background="@android:color/darker_gray" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -18,7 +18,6 @@ import com.example.myfamilymap.R;
 
 import HTTPConnection.LoginHandler;
 import HTTPConnection.RegisterHandler;
-
 import request.LoginRequest;
 import request.RegisterRequest;
 
@@ -124,13 +123,11 @@ public class LoginFragment extends Fragment {
         genderGroup.setOnCheckedChangeListener(mRadioWatcher);
 
         //login button
-        Button loginButton = (Button) view.findViewById(R.id.loginButton);
+        Button loginButton = view.findViewById(R.id.loginButton);
         loginButton.setOnClickListener(v -> createLoginHandler());
 
-
-
         //register button
-        Button registerButton = (Button) view.findViewById(R.id.registerButton);
+        Button registerButton = view.findViewById(R.id.registerButton);
         registerButton.setOnClickListener(v -> createRegisterHandler());
 
         checkLoginFields();
@@ -145,7 +142,9 @@ public class LoginFragment extends Fragment {
             LoginHandler loginHandler = new LoginHandler();
             loginHandler.login(this, urlString, loginRequest);
         } else {
-            Toast.makeText(view.getContext(), "Missing required field. Please ensure that all fields are properly completed.", Toast.LENGTH_LONG).show();
+            Toast.makeText(view.getContext(),
+                    R.string.loginErrorMsg,
+                    Toast.LENGTH_LONG).show();
         }
     }
 
@@ -156,12 +155,14 @@ public class LoginFragment extends Fragment {
             RegisterHandler registerHandler = new RegisterHandler();
             registerHandler.register(this, urlString, registerRequest);
         } else {
-            Toast.makeText(view.getContext(), "Missing required field. Please ensure that all fields are properly completed.", Toast.LENGTH_LONG).show();
+            Toast.makeText(view.getContext(),
+                    R.string.loginErrorMsg,
+                    Toast.LENGTH_LONG).show();
         }
     }
 
     private void checkLoginFields() {
-        Button login = (Button) view.findViewById(R.id.loginButton);
+        Button login = view.findViewById(R.id.loginButton);
 
         String hostIP = hostIPText.getText().toString();
         String port = portText.getText().toString();
@@ -172,7 +173,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void checkRegisterFields() {
-        Button register = (Button) view.findViewById(R.id.registerButton);
+        Button register = view.findViewById(R.id.registerButton);
 
         String hostIP = hostIPText.getText().toString();
         String port = portText.getText().toString();

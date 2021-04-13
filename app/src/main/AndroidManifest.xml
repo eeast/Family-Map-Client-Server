@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myfamilymap">
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -16,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFamilyMap"
         android:usesCleartextTraffic="true">
-        <activity android:name="main.EventsActivity" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,6 +36,22 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <activity
+            android:name="main.PersonActivity"
+            android:parentActivityName="main.MainActivity" />
+
+        <activity
+            android:name="main.SettingsActivity"
+            android:parentActivityName="main.MainActivity" />
+
+        <activity
+            android:name="main.SearchActivity"
+            android:parentActivityName="main.MainActivity" />
+
+        <activity
+            android:name="main.EventActivity"
+            android:parentActivityName="main.MainActivity" />
 
         <activity android:name="main.MainActivity">
             <intent-filter>

@@ -4,10 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import androidx.annotation.NonNull;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,19 +34,7 @@ public class EventsHandler extends ServerProxy{
         System.out.println("Retrieving Events via " + urlString);
 
         try {
-            Handler handler = new Handler() {
-                @Override
-                public void handleMessage(@NonNull Message message) {
-                    Bundle bundle = message.getData();
-                    if (bundle.getBoolean(ARG_SUCCESS)) {
-                        EventsResult result = new Gson().fromJson(bundle.getString(ARG_DATA), EventsResult.class);
-                        DataCache dataCache = DataCache.getInstance();
-                        for (Event event : result.getData()) {
-                            dataCache.getAllEvents().add(event);
-                        }
-                    }
-                }
-            };
+            Handler handler = new Handler();
 
             LoadEventsTask task = new LoadEventsTask(handler, urlString, authToken.getToken());
             ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -92,32 +77,21 @@ public class EventsHandler extends ServerProxy{
             EventsResult eventsResult = null;
             try {
                 eventsResult = accessServer(urlString, authToken);
+                if (eventsResult.isSuccess()) {
+                    DataCache dataCache = DataCache.getInstance();
+                    for (Event event : eventsResult.getData()) {
+                        dataCache.getAllEvents().add(event);
+                    }
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Error communicating with server");
             }
 
-            sendMessage(eventsResult);
-        }
-
-        /**
-         * sendMessage method returns the success boolean, message, and Person data from the
-         * PersonResult object back to the handler in the form of a bundle.
-         * @param eventsResult PersonsResult object received from the server
-         */
-        private void sendMessage(EventsResult eventsResult) {
             Message message = Message.obtain();
-
             Bundle messageBundle = new Bundle();
             messageBundle.putBoolean(ARG_SUCCESS, eventsResult.isSuccess());
-            messageBundle.putString(ARG_MESSAGE, eventsResult.getMessage());
-
-            Gson gsonSerializer = new GsonBuilder().setPrettyPrinting().create();
-            String jsonString = gsonSerializer.toJson(eventsResult);
-            messageBundle.putString(ARG_DATA, jsonString);
-
             message.setData(messageBundle);
-
             handler.sendMessage(message);
         }
     }

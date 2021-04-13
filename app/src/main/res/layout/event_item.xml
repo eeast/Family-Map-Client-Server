@@ -3,23 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/familyMap"
-        class="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/eventDataBox" />
-
-
     <LinearLayout
-        android:id="@+id/eventDataBox"
+        android:id="@+id/eventDetailsBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
+        android:orientation="horizontal" >
 
         <ImageView
             android:id="@+id/imageView"
@@ -28,30 +19,36 @@
             android:padding="12sp"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/personName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8sp"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:text="Dalton Minott" />
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/dataDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8sp"
+                android:layout_margin="8dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="DEATH: Barranquilla, Colombia (1935)" />
 
 
+            <TextView
+                android:id="@+id/personName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textSize="18sp"
+                tools:text="Dalton Minott" />
+
         </LinearLayout>
+
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/eventDetailsBox"
+        android:background="@android:color/darker_gray" />
 
 </RelativeLayout>

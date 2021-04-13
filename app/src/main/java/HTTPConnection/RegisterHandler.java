@@ -41,7 +41,7 @@ public class RegisterHandler extends ServerProxy {
                     public void handleMessage(Message message) {
                         Bundle bundle = message.getData();
                         if (bundle.getBoolean(ARG_SUCCESS)) {
-                            Toast.makeText(fragment.getView().getContext(), "Registration Successful!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(fragment.getView().getContext(), "Registration Successful!", Toast.LENGTH_SHORT).show();
 
                             //Save AuthToken
                             DataCache dataCache = DataCache.getInstance();

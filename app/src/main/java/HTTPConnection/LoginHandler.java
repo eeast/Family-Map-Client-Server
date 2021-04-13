@@ -36,7 +36,7 @@ public class LoginHandler extends ServerProxy {
                 public void handleMessage(Message message) {
                     Bundle bundle = message.getData();
                     if (bundle.getBoolean(ARG_SUCCESS)) {
-                        Toast.makeText(fragment.getView().getContext(), "Login Successful!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(fragment.getView().getContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
                         //Save AuthToken
                         DataCache dataCache = DataCache.getInstance();
                         String authTokenString = bundle.getString(ARG_AUTH_TOKEN);
@@ -55,7 +55,7 @@ public class LoginHandler extends ServerProxy {
                         //Switch view
                         ((MainActivity)fragment.getActivity()).switchMapView();
                     } else {
-                        Toast.makeText(fragment.getView().getContext(), "Unable to authenticate. Please check your username and/or password and try again.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(fragment.getView().getContext(), "Unable to authenticate. Please check your username and/or password and try again.", Toast.LENGTH_SHORT).show();
                     }
                 }
             };
@@ -101,6 +101,7 @@ public class LoginHandler extends ServerProxy {
                     System.out.println("Error communicating with server");
                 }
             }
+            assert loginResult != null;
             sendMessage(loginResult);
         }
 
