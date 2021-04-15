@@ -20,6 +20,8 @@ import com.joanzapata.iconify.IconDrawable;
 
 import java.util.List;
 
+import dataManagement.ColorMapping;
+import dataManagement.DataCache;
 import model.Event;
 import model.Person;
 

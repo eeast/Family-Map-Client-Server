@@ -1,4 +1,4 @@
-package main;
+package dataManagement;
 
 import com.example.myfamilymap.R;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -41,7 +41,7 @@ public class ColorMapping {
 
     public int getHex(String key) {
         key = key.toLowerCase();
-        if (colorMapHsl.containsKey(key)) {
+        if (colorMapHex.containsKey(key)) {
             return colorMapHex.get(key);
         } else {
             for (int i = 0; i < hexColors.size(); i++) {

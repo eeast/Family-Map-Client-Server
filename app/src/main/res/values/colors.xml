@@ -25,7 +25,7 @@
     <color name="magenta">#FFFF00FF</color>
     <color name="defaultLifeEvent">#FFbfff00</color>
 
-    <color name="life_lines">#FFFF9500</color>
-    <color name="family_lines">#FF04FF66</color>
+    <color name="life_lines">#FF04FF66</color>
+    <color name="family_lines">#FFFF9500</color>
     <color name="spouse_lines">#FF9100E3</color>
 </resources>

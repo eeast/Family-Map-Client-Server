@@ -10,6 +10,8 @@ import com.example.myfamilymap.R;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
+import dataManagement.DataCache;
+
 public class MainActivity extends AppCompatActivity {
 
     private final String LOGIN_FRAGMENT_TAG = "loginFragment";

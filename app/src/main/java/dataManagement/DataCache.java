@@ -1,4 +1,4 @@
-package main;
+package dataManagement;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,38 +74,16 @@ public class DataCache {
         return result;
     }
 
-    public Set<Person> getFilteredPersons() {
-        Set<Person> result = new HashSet<>();
-        if(optionToggle[MALE_EVENTS_TOGGLE]) {
-            if("m".equals(user.getGender())) {
-                result.add(user);
-            }
-            if(optionToggle[FATHER_SIDE_TOGGLE]) {
-                result.addAll(fatherSideMales);
-            }
-            if(optionToggle[MOTHER_SIDE_TOGGLE]) {
-                result.addAll(motherSideMales);
-            }
-        }
-        if(optionToggle[FEMALE_EVENTS_TOGGLE]) {
-            if("f".equals(user.getGender())) {
-                result.add(user);
-            }
-            if (optionToggle[FATHER_SIDE_TOGGLE]) {
-                result.addAll(fatherSideFemales);
-            }
-            if (optionToggle[MOTHER_SIDE_TOGGLE]) {
-                result.addAll(motherSideFemales);
-            }
-        }
-        return result;
-    }
-
     private Set<String> getFilteredPeopleIDs() {
         Set<String> result = new HashSet<>();
         if(optionToggle[MALE_EVENTS_TOGGLE]) {
-            if(user.getGender().equals("m")) {
+            if(user != null && "m".equals(user.getGender())) {
                 result.add(user.getPerson_id());
+            }
+            for(Person p : immediateFamilyMales) {
+                if(p.getPerson_id().equals(user.getSpouse_id())) {
+                    result.add(p.getPerson_id());
+                }
             }
             if(optionToggle[FATHER_SIDE_TOGGLE]) {
                 for(Person p : fatherSideMales) {
@@ -119,8 +97,13 @@ public class DataCache {
             }
         }
         if(optionToggle[FEMALE_EVENTS_TOGGLE]) {
-            if(user.getGender().equals("f")) {
+            if(user != null && "f".equals(user.getGender())) {
                 result.add(user.getPerson_id());
+            }
+            for(Person p : immediateFamilyFemales) {
+                if(p.getPerson_id().equals(user.getSpouse_id())) {
+                    result.add(p.getPerson_id());
+                }
             }
             if (optionToggle[FATHER_SIDE_TOGGLE]) {
                 for(Person p : fatherSideFemales) {
@@ -145,9 +128,8 @@ public class DataCache {
     }
 
     public Person findPerson(String personID) {
-        Set<String> filteredPersons = getFilteredPeopleIDs();
         for(Person person : allPersons) {
-            if (person.getPerson_id().equals(personID) && filteredPersons.contains(person.getPerson_id())) {
+            if (person.getPerson_id().equals(personID)) {
                 return person;
             }
         }
@@ -193,52 +175,47 @@ public class DataCache {
 
     public List<Person> getRelatives(Person person) {
         List<Person> relatives = new ArrayList<>();
-        Set<String> filteredPersons = getFilteredPeopleIDs();
-        if(user.getPerson_id().equals(person.getPerson_id())) {
+        if(person.getPerson_id().equals(user.getPerson_id())) {
             for(Person currentPerson : immediateFamilyFemales) {
-                if(filteredPersons.contains(currentPerson.getPerson_id())) {
-                    if (currentPerson.getPerson_id().equals(person.getFather_id())) { //father
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getPerson_id().equals(person.getMother_id())) { //mother
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getPerson_id().equals(person.getSpouse_id())) { //spouse
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getMother_id() != null && currentPerson.getMother_id().equals(person.getPerson_id())) { //child
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getFather_id() != null && currentPerson.getFather_id().equals(person.getPerson_id())) { //child
-                        relatives.add(currentPerson);
-                    }
+                if (currentPerson.getPerson_id().equals(person.getFather_id())) { //father
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getPerson_id().equals(person.getMother_id())) { //mother
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getPerson_id().equals(person.getSpouse_id())) { //spouse
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getMother_id() != null && currentPerson.getMother_id().equals(person.getPerson_id())) { //child
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getFather_id() != null && currentPerson.getFather_id().equals(person.getPerson_id())) { //child
+                    relatives.add(currentPerson);
                 }
+
             }
             for(Person currentPerson : immediateFamilyMales) {
-                if(filteredPersons.contains(currentPerson.getPerson_id())) {
-                    if (currentPerson.getPerson_id().equals(person.getFather_id())) { //father
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getPerson_id().equals(person.getMother_id())) { //mother
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getPerson_id().equals(person.getSpouse_id())) { //spouse
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getMother_id() != null && currentPerson.getMother_id().equals(person.getPerson_id())) { //child
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getFather_id() != null && currentPerson.getFather_id().equals(person.getPerson_id())) { //child
-                        relatives.add(currentPerson);
-                    }
+                if (currentPerson.getPerson_id().equals(person.getFather_id())) { //father
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getPerson_id().equals(person.getMother_id())) { //mother
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getPerson_id().equals(person.getSpouse_id())) { //spouse
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getMother_id() != null && currentPerson.getMother_id().equals(person.getPerson_id())) { //child
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getFather_id() != null && currentPerson.getFather_id().equals(person.getPerson_id())) { //child
+                    relatives.add(currentPerson);
                 }
+
             }
         } else {
             for (Person currentPerson : allPersons) {
-                if (filteredPersons.contains(currentPerson.getPerson_id())) {
-                    if (currentPerson.getPerson_id().equals(person.getFather_id())) { //father
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getPerson_id().equals(person.getMother_id())) { //mother
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getPerson_id().equals(person.getSpouse_id())) { //spouse
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getMother_id() != null && currentPerson.getMother_id().equals(person.getPerson_id())) { //child
-                        relatives.add(currentPerson);
-                    } else if (currentPerson.getFather_id() != null && currentPerson.getFather_id().equals(person.getPerson_id())) { //child
-                        relatives.add(currentPerson);
-                    }
+                if (currentPerson.getPerson_id().equals(person.getFather_id())) { //father
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getPerson_id().equals(person.getMother_id())) { //mother
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getPerson_id().equals(person.getSpouse_id())) { //spouse
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getMother_id() != null && currentPerson.getMother_id().equals(person.getPerson_id())) { //child
+                    relatives.add(currentPerson);
+                } else if (currentPerson.getFather_id() != null && currentPerson.getFather_id().equals(person.getPerson_id())) { //child
+                    relatives.add(currentPerson);
                 }
             }
         }
@@ -288,6 +265,54 @@ public class DataCache {
                 loadParents(person, motherSide);
             }
         }
+    }
+
+    public Set<Person> searchPeople (String query) {
+        Set<Person> result = new HashSet<>();
+        if(query.length() == 0) {
+            result.addAll(allPersons);
+        } else {
+            String searchTerm = query.toLowerCase();
+            for (Person p : allPersons) {
+                if (p.getFirst_name().toLowerCase().contains(searchTerm)) {
+                    result.add(p);
+                } else if (p.getLast_name().toLowerCase().contains(searchTerm)) {
+                    result.add(p);
+                }
+            }
+        }
+        return result;
+    }
+
+    public Set<Event> searchEvents (String query) {
+        Set<Event> result = new HashSet<>();
+        Set<Event> possibleEvents = getFilteredEvents();
+        if(query.length() == 0) {
+            result.addAll(possibleEvents);
+        } else {
+            for (Event e : possibleEvents) {
+                String searchTerm = query.toLowerCase();
+                if (e.getEvent_type().toLowerCase().contains(searchTerm)) {
+                    result.add(e);
+                } else if (e.getCountry().toLowerCase().contains(searchTerm)) {
+                    result.add(e);
+                } else if (e.getCity().toLowerCase().contains(searchTerm)) {
+                    result.add(e);
+                } else if (Integer.toString(e.getYear()).contains(searchTerm)) {
+                    result.add(e);
+                } else {
+                    Person p = findPerson(e.getPerson_id());
+                    if (p != null) {
+                        if (p.getFirst_name().toLowerCase().contains(searchTerm)) {
+                            result.add(e);
+                        } else if (p.getLast_name().toLowerCase().contains(searchTerm)) {
+                            result.add(e);
+                        }
+                    }
+                }
+            }
+        }
+        return result;
     }
 
     public boolean getOptionToggle(int index) {

@@ -38,6 +38,8 @@ import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import java.util.ArrayList;
 import java.util.List;
 
+import dataManagement.ColorMapping;
+import dataManagement.DataCache;
 import model.Event;
 import model.Person;
 

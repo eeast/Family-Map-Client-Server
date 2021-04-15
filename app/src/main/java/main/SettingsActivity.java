@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myfamilymap.R;
 
+import dataManagement.DataCache;
+
 public class SettingsActivity extends AppCompatActivity {
     private DataCache dataCache;
 

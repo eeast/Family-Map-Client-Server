@@ -18,9 +18,12 @@ import com.example.myfamilymap.R;
 import com.joanzapata.iconify.IconDrawable;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import dataManagement.ColorMapping;
+import dataManagement.DataCache;
 import model.Event;
 import model.Person;
 
@@ -67,8 +70,10 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
 
         DataCache dataCache = DataCache.getInstance();
-        people = dataCache.getFilteredPersons();
-        events = dataCache.getFilteredEvents();
+        people = new HashSet<>();
+        people.addAll(dataCache.getAllPersons());
+        events = new HashSet<>();
+        events.addAll(dataCache.getFilteredEvents());
 
         adapter = new DataAdapter(people, events);
         recyclerView.setAdapter(adapter);
@@ -77,40 +82,11 @@ public class SearchActivity extends AppCompatActivity {
     private void filterResults(String query) {
         people.clear();
         events.clear();
+        
         DataCache dataCache = DataCache.getInstance();
-        Set<Person> allPeople = dataCache.getFilteredPersons();
-        Set<Event> allEvents = dataCache.getFilteredEvents();
-        if(query.length() == 0) {
-            people.addAll(allPeople);
-            events.addAll(allEvents);
-        } else {
-            String searchTerm = query.toLowerCase();
-            for (Person p : allPeople) {
-                if (p.getFirst_name().toLowerCase().contains(searchTerm)) {
-                    people.add(p);
-                } else if (p.getLast_name().toLowerCase().contains(searchTerm)) {
-                    people.add(p);
-                }
-            }
-            for (Event e : allEvents) {
-                if (e.getEvent_type().toLowerCase().contains(searchTerm)) {
-                    events.add(e);
-                } else if (e.getCountry().toLowerCase().contains(searchTerm)) {
-                    events.add(e);
-                } else if (e.getCity().toLowerCase().contains(searchTerm)) {
-                    events.add(e);
-                } else if (Integer.toString(e.getYear()).contains(searchTerm)) {
-                    events.add(e);
-                } else {
-                    Person p = dataCache.findPerson(e.getPerson_id());
-                    if (p.getFirst_name().toLowerCase().contains(searchTerm)) {
-                        events.add(e);
-                    } else if (p.getLast_name().toLowerCase().contains(searchTerm)) {
-                        events.add(e);
-                    }
-                }
-            }
-        }
+        people = dataCache.searchPeople(query);
+        events = dataCache.searchEvents(query);
+
         adapter = new DataAdapter(people, events);
         recyclerView.setAdapter(adapter);
     }

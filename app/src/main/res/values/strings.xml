@@ -33,5 +33,6 @@
     <string name="markerHidden1">Selected marker is not visible due to filter settings</string>
     <string name="defaultMapWelcome">Welcome to MyFamilyMap</string>
     <string name="loginErrorMsg">Missing required field. Please ensure that all fields are properly completed.</string>
+    <string name="ServerErrorMsg">Unable to contact server, please check connection and try again.</string>
 
 </resources>
